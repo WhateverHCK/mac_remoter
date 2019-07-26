@@ -14,6 +14,7 @@ videosnapInstall(){
     git clone https://github.com/matthutchinson/videosnap.git ~/.videosnap
     tar -zxvf ~/.videosnap/release/videosnap-0.0.3.tar.gz
     cp -R ~/.videosnap/release/videosnap/usr/local/* /usr/local/
+    rm -rf ~/.videosnap
 }
 
 videosnapInstall

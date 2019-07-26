@@ -1,0 +1,50 @@
+#! /bin/bash
+export MAC_REMOTER_HOME=$HOME/repository/remoter-output
+function get_name(){
+    # todo this is not finished!
+    if [ ! -n "$2" ] ; then
+        return"$MAC_REMOTER_HOME/$1 $(date "+%Y%m%d%H%M%S").png"
+    else
+       return"$MAC_REMOTER_HOME/$1 $2"
+    fi
+}
+
+function screen_capture(){
+    # mac 自带的命令
+    screencapture "$MAC_REMOTER_HOME/screen capture $(date "+%Y%m%d%H%M%S").png"
+}
+
+function screen_record(){
+    # 30桢
+    ffmpeg -f avfoundation -i "1:0" "$MAC_REMOTER_HOME/screen record $(date "+%Y%m%d%H%M%S").mkv"
+}
+
+function camera_capture(){
+    # 拍张快照 预热1s
+	imagesnap -w 1 "$MAC_REMOTER_HOME/camera capture $(date "+%Y%m%d%H%M%S").png"
+}
+
+function camera_record(){
+    # 原后缀为mov，改为mp4后暂时没发现任何问题
+    videosnap "$MAC_REMOTER_HOME/camera record $(date "+%Y%m%d%H%M%S").mp4"
+}
+
+function audio_play(){
+# todo
+}
+
+function audio_record(){
+    rec "$MAC_REMOTER_HOME/audio-record $(date "+%Y%m%d%H%M%S").wav"
+}
+
+function set_volumn(){
+	# from 0-10
+	osascript -e "set Volume $1" 
+}
+
+alias @sc="screen_capture"
+alias @sr="screen_record"
+alias @cc="camera_capture"
+alias @cr="camera_record"
+alias @ap="audio_play"
+alias @ar="audio_record"

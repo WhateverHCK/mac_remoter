@@ -37,7 +37,7 @@ function audio_record(){
     rec "$MAC_REMOTER_HOME/audio-record $(date "+%Y%m%d%H%M%S").wav"
 }
 
-function set_volumn(){
+function set_volume(){
 	# from 0-10
 	osascript -e "set Volume $1" 
 }
